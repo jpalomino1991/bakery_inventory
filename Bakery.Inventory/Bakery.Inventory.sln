@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bakery.Inventory", "Bakery.Inventory\Bakery.Inventory\Bakery.Inventory.csproj", "{45C7AD76-A966-4C61-85AD-3A4CF532D172}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bakery.Inventory.Domain", "Bakery.Inventory\Bakery.Inventory.Domain\Bakery.Inventory.Domain.csproj", "{23168556-1D28-4842-B597-5A7840FD3346}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bakery.Inventory.DomainApi", "Bakery.Inventory\Bakery.Inventory.DomainApi\Bakery.Inventory.DomainApi.csproj", "{AE88FF1C-524D-4E6A-80EA-A1E586690278}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bakery.Inventory.Persistence.Adapter", "Bakery.Inventory\Bakery.Inventory.Persistence.Adapter\Bakery.Inventory.Persistence.Adapter.csproj", "{2EB061C8-8CDF-47CF-B498-DEA40CC487CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bakery.Inventory.RestAdapter", "Bakery.Inventory\Bakery.Inventory.RestAdapter\Bakery.Inventory.RestAdapter.csproj", "{EA55936A-2120-4A31-A27C-F94E7EED431A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bakery.Inventory.Domain.UnitTest", "Bakery.Inventory\Bakery.Inventory.Domain.UnitTest\Bakery.Inventory.Domain.UnitTest.csproj", "{290E5AEE-B882-4FF6-B726-A36F029C16FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bakery.Inventory.DomainApi.UnitTest", "Bakery.Inventory\Bakery.Inventory.DomainApi.UnitTest\Bakery.Inventory.DomainApi.UnitTest.csproj", "{9D3C855A-DB0C-4489-A708-7AA3C5F7A86A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bakery.Inventory.Persistence.Adapter.UnitTest", "Bakery.Inventory\Bakery.Inventory.Persistence.Adapter.UnitTest\Bakery.Inventory.Persistence.Adapter.UnitTest.csproj", "{D08C58FE-0F43-4CC0-B2ED-E1AB7D3A167B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bakery.Inventory.RestAdapter.UnitTest", "Bakery.Inventory\Bakery.Inventory.RestAdapter.UnitTest\Bakery.Inventory.RestAdapter.UnitTest.csproj", "{EBEFAB05-2F4F-43CB-91C7-B31116EFD034}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45C7AD76-A966-4C61-85AD-3A4CF532D172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C7AD76-A966-4C61-85AD-3A4CF532D172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C7AD76-A966-4C61-85AD-3A4CF532D172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C7AD76-A966-4C61-85AD-3A4CF532D172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23168556-1D28-4842-B597-5A7840FD3346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23168556-1D28-4842-B597-5A7840FD3346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23168556-1D28-4842-B597-5A7840FD3346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23168556-1D28-4842-B597-5A7840FD3346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE88FF1C-524D-4E6A-80EA-A1E586690278}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE88FF1C-524D-4E6A-80EA-A1E586690278}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE88FF1C-524D-4E6A-80EA-A1E586690278}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE88FF1C-524D-4E6A-80EA-A1E586690278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EB061C8-8CDF-47CF-B498-DEA40CC487CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EB061C8-8CDF-47CF-B498-DEA40CC487CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EB061C8-8CDF-47CF-B498-DEA40CC487CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EB061C8-8CDF-47CF-B498-DEA40CC487CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA55936A-2120-4A31-A27C-F94E7EED431A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA55936A-2120-4A31-A27C-F94E7EED431A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA55936A-2120-4A31-A27C-F94E7EED431A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA55936A-2120-4A31-A27C-F94E7EED431A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{290E5AEE-B882-4FF6-B726-A36F029C16FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{290E5AEE-B882-4FF6-B726-A36F029C16FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{290E5AEE-B882-4FF6-B726-A36F029C16FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{290E5AEE-B882-4FF6-B726-A36F029C16FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D3C855A-DB0C-4489-A708-7AA3C5F7A86A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D3C855A-DB0C-4489-A708-7AA3C5F7A86A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D3C855A-DB0C-4489-A708-7AA3C5F7A86A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D3C855A-DB0C-4489-A708-7AA3C5F7A86A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D08C58FE-0F43-4CC0-B2ED-E1AB7D3A167B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D08C58FE-0F43-4CC0-B2ED-E1AB7D3A167B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D08C58FE-0F43-4CC0-B2ED-E1AB7D3A167B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D08C58FE-0F43-4CC0-B2ED-E1AB7D3A167B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBEFAB05-2F4F-43CB-91C7-B31116EFD034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBEFAB05-2F4F-43CB-91C7-B31116EFD034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBEFAB05-2F4F-43CB-91C7-B31116EFD034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBEFAB05-2F4F-43CB-91C7-B31116EFD034}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E3F0438-7A58-4766-8D3F-29AF0F3B42D3}
+	EndGlobalSection
+EndGlobal
