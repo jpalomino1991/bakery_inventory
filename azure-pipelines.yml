@@ -21,6 +21,7 @@ steps:
   inputs:
     command: 'restore'
     feedsToUse: 'select'
+    restoreSolution: '$(solution)'
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
