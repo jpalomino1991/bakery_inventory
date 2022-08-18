@@ -11,8 +11,16 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  solution: '**/Bakery.Inventory.sln'
+  project: '**/Bakery.Inventory.csproj'
 
 steps:
+
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    command: 'restore'
+    feedsToUse: 'select'
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
@@ -27,10 +35,21 @@ steps:
     publishTestResults: true
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 
+- task: PublishTestResults@2
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
 - task: DotNetCoreCLI@2
   displayName: Publish
   inputs:
     command: publish
-    publishWebProjects: True
+    publishWebProjects: false
+    projects: '$(project)'
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifacts'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
