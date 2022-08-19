@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Bakery.Inventory.Domain.UnitTest
 {
-    public class DealDomainTest
+    public class InventoryDomainTest
     {
         private InventoryDomain<Bakery.Inventory.DomainApi.Model.Inventory> _dealDomain;
 

@@ -71,7 +71,7 @@ namespace Bakery.Inventory
             });
 
             var processQueue = provider.GetService<IProcessQueue>();
-            processQueue.Initialize();
+            processQueue.InitializeAsync().GetAwaiter().GetResult();
         }
     }
 }

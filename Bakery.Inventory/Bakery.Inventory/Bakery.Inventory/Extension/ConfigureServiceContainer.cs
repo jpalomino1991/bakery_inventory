@@ -10,6 +10,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 
@@ -17,6 +18,7 @@ namespace Bakery.Inventory.Extension
 {
     public static class ConfigureServiceContainer
     {
+        [ExcludeFromCodeCoverage]
         public static void AddSwaggerOpenAPI(this IServiceCollection serviceCollection, AppSettings appSettings)
         {
             serviceCollection.AddSwaggerGen(setupAction =>
@@ -52,6 +54,7 @@ namespace Bakery.Inventory.Extension
             });
         }
 
+        [ExcludeFromCodeCoverage]
         public static void AddApiVersion(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddApiVersioning(config =>
@@ -62,6 +65,7 @@ namespace Bakery.Inventory.Extension
             });
         }
 
+        [ExcludeFromCodeCoverage]
         public static void AddHealthCheck(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddHealthChecks()
@@ -74,6 +78,7 @@ namespace Bakery.Inventory.Extension
             });
         }
 
+        [ExcludeFromCodeCoverage]
         public static void AddCustomServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient(typeof(IServiceBusHelper), typeof(ServiceBusHelper));

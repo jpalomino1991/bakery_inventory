@@ -6,6 +6,7 @@ using Bakery.Inventory.DomainApi.Port;
 using Bakery.Inventory.Persistence.Adapter.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -16,17 +17,20 @@ namespace Bakery.Inventory.Domain
         private readonly IServiceBusHelper _serviceBusHelper;
         private readonly IConfiguration _configuration;
 
+        [ExcludeFromCodeCoverage]
         public ProcessQueue(IServiceBusHelper serviceBusHelper, IConfiguration configuration)
         {
             _serviceBusHelper = serviceBusHelper;
             _configuration = configuration;
         }
 
-        public async Task Initialize()
+        [ExcludeFromCodeCoverage]
+        public async Task InitializeAsync()
         {
             await _serviceBusHelper.ProcessAsync(MessageHandler);
         }
 
+        [ExcludeFromCodeCoverage]
         private async Task MessageHandler(ProcessMessageEventArgs args)
         {
             string body = args.Message.Body.ToString();
@@ -48,6 +52,7 @@ namespace Bakery.Inventory.Domain
             await args.CompleteMessageAsync(args.Message);
         }
 
+        [ExcludeFromCodeCoverage]
         private ApplicationDbContext CreateTemporaryContext()
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
