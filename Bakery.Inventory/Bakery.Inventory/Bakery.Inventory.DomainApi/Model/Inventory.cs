@@ -17,10 +17,10 @@ namespace Bakery.Inventory.DomainApi.Model
         //public virtual Product Product { get; set; }
         [Required]
         public int Quantity { get; set; }
-        public String Invoice { get; set; }
+        public string Invoice { get; set; }
         [Required]
         public DateTime CreatedDate { get; set; }
-        //public User User { get; set; }
-        public String Location { get; set; }
+        public string User { get; set; }
+        public string Location { get; set; }
     }
 }

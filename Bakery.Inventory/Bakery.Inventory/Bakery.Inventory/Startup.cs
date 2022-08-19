@@ -1,4 +1,5 @@
 using Bakery.Inventory.Domain;
+using Bakery.Inventory.DomainApi.Port;
 using Bakery.Inventory.DomainApi.Services;
 using Bakery.Inventory.Extension;
 using Bakery.Inventory.Persistence.Adapter;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Web;
 using Serilog;
+using System;
 
 namespace Bakery.Inventory
 {
@@ -33,16 +35,18 @@ namespace Bakery.Inventory
 
             services.AddControllers();
 
-            services.AddPersistence();
+            services.AddPersistence(AppSettings);
 
             services.AddDomain();
 
             services.AddSwaggerOpenAPI(AppSettings);
 
             services.AddApiVersion();
+
+            services.AddCustomServices();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory log)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory log, IServiceProvider provider)
         {
             if (env.IsDevelopment())
             {
@@ -65,6 +69,9 @@ namespace Bakery.Inventory
             {
                 endpoints.MapControllers();
             });
+
+            var processQueue = provider.GetService<IProcessQueue>();
+            processQueue.Initialize();
         }
     }
 }

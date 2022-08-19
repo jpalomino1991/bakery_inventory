@@ -1,9 +1,6 @@
-﻿using Bakery.Inventory.DomainApi.Model;
-using Bakery.Inventory.DomainApi.Port;
+﻿using Bakery.Inventory.DomainApi.Port;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 
 namespace Bakery.Inventory.RestAdapter.Controllers.v1
 {
@@ -37,6 +34,7 @@ namespace Bakery.Inventory.RestAdapter.Controllers.v1
         [HttpPost]
         public IActionResult AddInventory([FromBody] Bakery.Inventory.DomainApi.Model.Inventory inventory)
         {
+            inventory.User = User.Identity.Name;
             var result = _requestInventory.AddValue(inventory);
             if (result == null)
                 return BadRequest("Inventory already exists");
@@ -62,6 +60,7 @@ namespace Bakery.Inventory.RestAdapter.Controllers.v1
         [HttpPut]
         public IActionResult UpdateInventory([FromBody] Bakery.Inventory.DomainApi.Model.Inventory inventory)
         {
+            inventory.User = User.Identity.Name;
             var result = _requestInventory.EditValue(inventory);
             if (result == null)
                 return BadRequest("Inventory doesn't exists");

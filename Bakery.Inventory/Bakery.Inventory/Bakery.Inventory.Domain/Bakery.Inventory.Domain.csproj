@@ -5,12 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.10.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Bakery.Inventory.DomainApi\Bakery.Inventory.DomainApi.csproj" />
     <ProjectReference Include="..\Bakery.Inventory.Persistence.Adapter\Bakery.Inventory.Persistence.Adapter.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Bakery.Commons">
+      <HintPath>..\Bakery.Inventory.DomainApi\Bakery.Commons.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

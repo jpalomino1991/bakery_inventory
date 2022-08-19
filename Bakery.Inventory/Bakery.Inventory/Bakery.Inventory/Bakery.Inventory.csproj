@@ -13,6 +13,7 @@
     <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="3.1.1" />
     <PackageReference Include="AspNetCore.HealthChecks.UI" Version="3.0.11" />
     <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="3.1.7" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.Identity.Web" Version="1.25.1" />
@@ -24,6 +25,12 @@
   <ItemGroup>
     <ProjectReference Include="..\Bakery.Inventory.Domain\Bakery.Inventory.Domain.csproj" />
     <ProjectReference Include="..\Bakery.Inventory.RestAdapter\Bakery.Inventory.RestAdapter.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="Bakery.Commons">
+      <HintPath>..\Bakery.Inventory.DomainApi\Bakery.Commons.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
