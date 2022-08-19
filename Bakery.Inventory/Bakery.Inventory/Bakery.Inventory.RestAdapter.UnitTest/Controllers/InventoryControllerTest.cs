@@ -112,7 +112,8 @@ namespace Bakery.Inventory.RestAdapter.UnitTest.Controllers
                     Quantity = 1,
                     Invoice = "",
                     CreatedDate = DateTime.Now,
-                    Location = "Almacen 1"
+                    Location = "Almacen 1",
+                    User = ""
                 },
                 new Bakery.Inventory.DomainApi.Model.Inventory
                 {
@@ -121,7 +122,8 @@ namespace Bakery.Inventory.RestAdapter.UnitTest.Controllers
                     Quantity = 2,
                     Invoice = "",
                     CreatedDate = DateTime.Now,
-                    Location = "Almacen 2"
+                    Location = "Almacen 2",
+                    User = ""
                 }
             };
 
@@ -138,7 +140,8 @@ namespace Bakery.Inventory.RestAdapter.UnitTest.Controllers
                     Quantity = 1,
                     Invoice = "",
                     CreatedDate = DateTime.Now,
-                    Location = "Almacen 1"
+                    Location = "Almacen 1",
+                    User = ""
                 };
         }
     }
