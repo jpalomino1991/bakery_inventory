@@ -1,19 +1,20 @@
 using Bakery.Inventory.DomainApi.Model;
 using Bakery.Inventory.Persistence.Adapter.UnitTest.Common;
 using NUnit.Framework;
+using System.Linq;
 
 namespace Bakery.Inventory.Domain.UnitTest
 {
     public class DealDomainTest
     {
-        private DealDomain<Bakery.Inventory.DomainApi.Model.Inventory> _dealDomain;
+        private InventoryDomain<Bakery.Inventory.DomainApi.Model.Inventory> _dealDomain;
 
         [Test]
         public void GetDealsTest()
         {
             using var context = ApplicationDbContextFactory.Create();
-            _dealDomain = new DealDomain<Bakery.Inventory.DomainApi.Model.Inventory>(context);
-            var deals = _dealDomain.GetDeals();
+            _dealDomain = new InventoryDomain<Bakery.Inventory.DomainApi.Model.Inventory>(context);
+            var deals = _dealDomain.GetValues().ToList();
             Assert.AreEqual(3, deals.Count);
             Assert.AreEqual(1, deals[0].Id);
             Assert.AreEqual(2, deals[0].Quantity);
@@ -25,8 +26,8 @@ namespace Bakery.Inventory.Domain.UnitTest
         public void GetDealByIdTest()
         {
             using var context = ApplicationDbContextFactory.Create();
-            _dealDomain = new DealDomain<Bakery.Inventory.DomainApi.Model.Inventory>(context);
-            var deals = _dealDomain.GetDeal(1);
+            _dealDomain = new InventoryDomain<Bakery.Inventory.DomainApi.Model.Inventory>(context);
+            var deals = _dealDomain.GetValue(1);
             Assert.AreEqual(1, deals.Id);
             Assert.AreEqual(2, deals.Quantity);
             Assert.AreEqual("Almacen 1", deals.Location);
@@ -37,7 +38,7 @@ namespace Bakery.Inventory.Domain.UnitTest
         public void AddDealTest()
         {
             using var context = ApplicationDbContextFactory.Create();
-            _dealDomain = new DealDomain<Bakery.Inventory.DomainApi.Model.Inventory>(context);
+            _dealDomain = new InventoryDomain<Bakery.Inventory.DomainApi.Model.Inventory>(context);
 
             var inventory = ApplicationDbContextFactory.dummyInventory();
 
@@ -53,9 +54,9 @@ namespace Bakery.Inventory.Domain.UnitTest
         public void EditDealTest()
         {
             using var context = ApplicationDbContextFactory.Create();
-            _dealDomain = new DealDomain<Bakery.Inventory.DomainApi.Model.Inventory>(context);
+            _dealDomain = new InventoryDomain<Bakery.Inventory.DomainApi.Model.Inventory>(context);
 
-            var inventory = _dealDomain.GetDeal(2);
+            var inventory = _dealDomain.GetValue(2);
             inventory.Location = "Almacen 2";
             inventory.Invoice = "Invoice 1";
             inventory.Quantity = 5;
@@ -71,9 +72,9 @@ namespace Bakery.Inventory.Domain.UnitTest
         public void DeleteDealTest()
         {
             using var context = ApplicationDbContextFactory.Create();
-            _dealDomain = new DealDomain<Bakery.Inventory.DomainApi.Model.Inventory>(context);
+            _dealDomain = new InventoryDomain<Bakery.Inventory.DomainApi.Model.Inventory>(context);
 
-            var inventory = _dealDomain.GetDeal(2);
+            var inventory = _dealDomain.GetValue(2);
             inventory.Quantity = 2;
 
             var deal = _dealDomain.DeleteValue(inventory);

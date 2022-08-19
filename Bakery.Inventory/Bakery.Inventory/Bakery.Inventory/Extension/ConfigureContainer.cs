@@ -14,7 +14,7 @@ namespace Bakery.Inventory.Extension
 
             app.UseSwaggerUI(setupAction =>
             {
-                setupAction.SwaggerEndpoint("/swagger/OpenAPISpecification/swagger.json", "Hexagonal Architecture API");
+                setupAction.SwaggerEndpoint("/swagger/OpenAPISpecification/swagger.json", "Inventory API");
                 setupAction.RoutePrefix = "OpenAPI";
             });
         }

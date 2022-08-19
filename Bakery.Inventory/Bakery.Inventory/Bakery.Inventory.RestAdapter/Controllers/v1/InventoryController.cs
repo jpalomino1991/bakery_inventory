@@ -1,43 +1,43 @@
 ﻿using Bakery.Inventory.DomainApi.Model;
 using Bakery.Inventory.DomainApi.Port;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 
 namespace Bakery.Inventory.RestAdapter.Controllers.v1
 {
+    [Authorize]
     [ApiController]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public class DealController : ControllerBase
+    public class InventoryController : ControllerBase
     {
-        private readonly IRequestDeal<Bakery.Inventory.DomainApi.Model.Inventory> _requestDeal;
+        private readonly IRequestInventory<Bakery.Inventory.DomainApi.Model.Inventory> _requestInventory;
 
-        public DealController(IRequestDeal<Bakery.Inventory.DomainApi.Model.Inventory> requestDeal)
+        public InventoryController(IRequestInventory<Bakery.Inventory.DomainApi.Model.Inventory> requestInventory)
         {
-            _requestDeal = requestDeal;
+            _requestInventory = requestInventory;
         }
 
-        // GET: api/deal
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetInventories()
         {
-            var result = _requestDeal.GetDeals();
-            return Ok(result);
+            var inventories = _requestInventory.GetValues();
+            return Ok(inventories);
         }
 
-        // GET: api/deal/1
         [HttpGet]
-        [Route("{id}", Name = "GetDeal")]
-        public IActionResult Get(int id)
+        [Route("{id}")]
+        public IActionResult GetInventory(int id)
         {
-            var result = _requestDeal.GetDeal(id);
-            return Ok(result);
+            var inventories = _requestInventory.GetValue(id);
+            return Ok(inventories);
         }
 
         [HttpPost]
         public IActionResult AddInventory([FromBody] Bakery.Inventory.DomainApi.Model.Inventory inventory)
         {
-            var result = _requestDeal.AddValue(inventory);
+            var result = _requestInventory.AddValue(inventory);
             if (result == null)
                 return BadRequest("Inventory already exists");
             return Ok(result);
@@ -48,12 +48,12 @@ namespace Bakery.Inventory.RestAdapter.Controllers.v1
         {
             try
             {
-                var result = _requestDeal.DeleteValue(inventory);
+                var result = _requestInventory.DeleteValue(inventory);
                 if (result == null)
                     return BadRequest("Inventory doesn't exists");
                 return Ok(result);
             }
-            catch(InvalidOperationException e)
+            catch
             {
                 return BadRequest("Stock is less than quantity");
             }
@@ -62,7 +62,7 @@ namespace Bakery.Inventory.RestAdapter.Controllers.v1
         [HttpPut]
         public IActionResult UpdateInventory([FromBody] Bakery.Inventory.DomainApi.Model.Inventory inventory)
         {
-            var result = _requestDeal.EditValue(inventory);
+            var result = _requestInventory.EditValue(inventory);
             if (result == null)
                 return BadRequest("Inventory doesn't exists");
             return Ok(result);

@@ -10,25 +10,25 @@ using System.Linq;
 
 namespace Bakery.Inventory.RestAdapter.UnitTest.Controllers
 {
-    public class DealControllerTest
+    public class InventoryControllerTest
     {
-        private DealController _controller;
-        private Mock<IRequestDeal<Bakery.Inventory.DomainApi.Model.Inventory>> _requestDealMock;
+        private InventoryController _controller;
+        private Mock<IRequestInventory<Bakery.Inventory.DomainApi.Model.Inventory>> _requestDealMock;
 
         [SetUp]
         public void Setup()
         {
-            _requestDealMock = new Mock<IRequestDeal<Bakery.Inventory.DomainApi.Model.Inventory>>();
-            _controller = new DealController(_requestDealMock.Object);
+            _requestDealMock = new Mock<IRequestInventory<Bakery.Inventory.DomainApi.Model.Inventory>>();
+            _controller = new InventoryController(_requestDealMock.Object);
         }
 
         [Test]
-        public void GetAllDealTestOkResult()
+        public void GetAllInventoryTestOkResult()
         {
-            _requestDealMock.Setup(mock => mock.GetDeals())
+            _requestDealMock.Setup(mock => mock.GetValues())
             .Returns(InitInventorieList());
 
-            var response = _controller.Get();
+            var response = _controller.GetInventories();
             Assert.IsInstanceOf<OkObjectResult>(response);
             var result = (OkObjectResult)response;
             Assert.IsNotNull(result);
@@ -41,12 +41,12 @@ namespace Bakery.Inventory.RestAdapter.UnitTest.Controllers
         }
 
         [Test]
-        public void GetAllDealByIdTestOkResult()
+        public void GetAllInventoryByIdTestOkResult()
         {
-            _requestDealMock.Setup(mock => mock.GetDeal(It.IsAny<int>()))
+            _requestDealMock.Setup(mock => mock.GetValue(It.IsAny<int>()))
             .Returns(GetInventory());
 
-            var response = _controller.Get(1);
+            var response = _controller.GetInventory(1);
 
             Assert.IsInstanceOf<OkObjectResult>(response);
             var result = (OkObjectResult)response;
@@ -59,7 +59,7 @@ namespace Bakery.Inventory.RestAdapter.UnitTest.Controllers
         }
 
         [Test]
-        public void AddDealTestOkResult()
+        public void AddInventoryTestOkResult()
         {
             var inventory = GetInventory();
             _requestDealMock.Setup(mock => mock.AddValue(It.IsAny<Bakery.Inventory.DomainApi.Model.Inventory>()))
@@ -78,7 +78,7 @@ namespace Bakery.Inventory.RestAdapter.UnitTest.Controllers
         }
 
         [Test]
-        public void DeleteDealTestNoValue()
+        public void DeleteInventoryTestNoValue()
         {
             var inventory = GetInventory();
             _requestDealMock.Setup(mock => mock.DeleteValue(It.IsAny<Bakery.Inventory.DomainApi.Model.Inventory>()))
@@ -90,7 +90,7 @@ namespace Bakery.Inventory.RestAdapter.UnitTest.Controllers
         }
 
         [Test]
-        public void EditDealTestNoValue()
+        public void EditInventoryTestNoValue()
         {
             var inventory = GetInventory();
             _requestDealMock.Setup(mock => mock.EditValue(It.IsAny<Bakery.Inventory.DomainApi.Model.Inventory>()))

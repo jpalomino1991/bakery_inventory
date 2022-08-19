@@ -9,24 +9,25 @@ using System.Threading.Tasks;
 
 namespace Bakery.Inventory.Domain
 {
-    public class DealDomain<T> : IRequestDeal<T> where T : Bakery.Inventory.DomainApi.Model.Inventory
+    public class InventoryDomain<T> : IRequestInventory<T> where T : Bakery.Inventory.DomainApi.Model.Inventory
     {
         ApplicationDbContext _dbContext;
         private readonly DbSet<T> table;
 
-        public DealDomain(ApplicationDbContext dbContext)
+        public InventoryDomain(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
             table = _dbContext.Set<T>();
         }
-        public T GetDeal(int id)
-        {
-            return table.Where(i => i.ProductId == id).FirstOrDefault();
-        }
 
-        public List<T> GetDeals()
+        public IEnumerable<T> GetValues()
         {
             return table.ToList();
+        }
+
+        public T GetValue(int id)
+        {
+            return table.Find(id);
         }
 
         public T AddValue(T value)
