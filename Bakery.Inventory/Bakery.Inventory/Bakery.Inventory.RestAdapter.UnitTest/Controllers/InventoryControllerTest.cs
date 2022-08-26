@@ -1,6 +1,7 @@
 ﻿using Bakery.Inventory.DomainApi.Model;
 using Bakery.Inventory.DomainApi.Port;
 using Bakery.Inventory.RestAdapter.Controllers.v1;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
@@ -67,14 +68,8 @@ namespace Bakery.Inventory.RestAdapter.UnitTest.Controllers
 
             var response = _controller.AddInventory(inventory);
 
-            Assert.IsInstanceOf<OkObjectResult>(response);
-            var result = (OkObjectResult)response;
-            Assert.IsNotNull(result);
-            var deal = result.Value as Bakery.Inventory.DomainApi.Model.Inventory;
-            Assert.IsNotNull(deal);
-            Assert.AreEqual(inventory.Id, deal.Id);
-            Assert.AreEqual(inventory.ProductId, deal.ProductId);
-            Assert.AreEqual(inventory.Location, deal.Location);
+            var result = (StatusCodeResult)response;
+            Assert.IsTrue(result.StatusCode == StatusCodes.Status201Created);
         }
 
         [Test]

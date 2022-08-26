@@ -1,5 +1,6 @@
 ﻿using Bakery.Inventory.DomainApi.Port;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bakery.Inventory.RestAdapter.Controllers.v1
@@ -39,7 +40,7 @@ namespace Bakery.Inventory.RestAdapter.Controllers.v1
             var result = _requestInventory.AddValue(inventory);
             if (result == null)
                 return BadRequest("Inventory already exists");
-            return Ok(result);
+            return StatusCode(StatusCodes.Status201Created);
         }
 
         [HttpDelete]
@@ -50,7 +51,7 @@ namespace Bakery.Inventory.RestAdapter.Controllers.v1
                 var result = _requestInventory.DeleteValue(inventory);
                 if (result == null)
                     return BadRequest("Inventory doesn't exists");
-                return Ok(result);
+                return StatusCode(StatusCodes.Status204NoContent);
             }
             catch
             {
